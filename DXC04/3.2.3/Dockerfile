@@ -1,3 +1,4 @@
 FROM ubuntu:20.04
-RUN sudo apt install nginx
-RUN sudo apt install net-tools
+RUN apt-get update
+RUN apt-get -y install nginx
+RUN apt-get -y install net-tools
