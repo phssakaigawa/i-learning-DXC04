@@ -1,4 +1,3 @@
-
 version: '3.7'
 services:
   gitLab:
@@ -19,16 +18,14 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         gitlab_rails['time_zone'] = 'Tokyo'
         #[OPTION]gitlab container registryを有効化することで、コンテナをローカルに保有できる
-        registry_external_url 'http://gitlab.192.168.200.50.nip.io:5050'
+        external_url 'https://gitlab.192.168.200.50.nip.io'
+        registry_external_url 'https://gitlab.192.168.200.50.nip.io:5050'
         gitlab_rails['registry_enabled'] = true
-        gitlab_rails['registry_api_url'] = "http://localhost:5050"
-        registry['enable'] = true
-        registry_nginx['enable'] = false
-        registry['registry_http_addr'] = "0.0.0.0:5050"
+        letsencrypt['enable'] = true
+
         #[OPTION]リソース軽減するために不要な機能を停止
         gitlab_rails['gitlab_kas_enabled'] = false
         grafana['enable'] = false
         prometheus_monitoring['enable'] = false
         prometheus['enable'] = false
         alertmanager['enable'] = false
-
